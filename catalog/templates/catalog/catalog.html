@@ -1,0 +1,29 @@
+{% extends 'catalog/base.html' %}
+
+    {% block content%}
+    <div class="row text-center">
+
+        <div>
+            <h1>Магазин Электроннки</h1>
+        </div>
+
+    {% for object in object_list %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ object.name }}</h3>
+                        <h4 class="card-title pricing-card-title">{{ object.purchase_price }} руб.</h4>
+                        <p class="card-text">
+                            {{ object.description }}
+                        </p>
+                        <a href="{% url 'products' object.id %}" class="btn btn-primary">Просмотр товара</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>>
+{% endblock %}
+
+
