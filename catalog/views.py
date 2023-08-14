@@ -2,16 +2,12 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 
 from catalog.models import Product
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 
-def index(request):
-    """Контроллер, который отвечает за отображение домашней страницы."""
-    """Контроллер, который отвечает за отображение информации о продуктах."""
-    products_list = Product.objects.all()
-    context = {
-        'object_list': products_list
-    }
-    return render(request, 'catalog/catalog.html', context)
+class IndexListView(ListView):
+    model = Product
+    template_name = 'catalog/catalog.html'
 
 
 
@@ -26,11 +22,17 @@ def contacts(request):
 
     return render(request, 'catalog/contacts.html')
 
-def products(request, id):
-    """представление страницы main/product.html для каждого продукта"""
-    get = get_object_or_404(Product, pk=id)
-    product_id = {'products': get}
 
-    return render(request, 'catalog/products.html', product_id)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'catalog/products.html'
+
+    def products(self, request, id):
+        """представление страницы main/product.html для каждого продукта"""
+        get = get_object_or_404(Product, pk=id)
+        product_id = {'products': get}
+
+        return render(request, self.template_name, product_id)
+
 
 
