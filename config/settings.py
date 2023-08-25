@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'HomeWork', # Название БД
+        'NAME': 'HomeWork19', # Название БД
         'USER': 'postgres', # Пользователь для подключения
         'PASSWORD': '123406@aLINA', # Пароль для этого пользователя
         'PORT': 5432,

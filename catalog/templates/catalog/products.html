@@ -1,20 +1,24 @@
 {% extends 'catalog/base.html' %}
-
 {% block content%}
+{% load media_path %}
 
     <div class="container">
+
         <div class="row">
-            <div class="col-md-4">
-                <img src="/media/" alt="Изображение товара" class="img-fluid">
-            </div>
+        <figure class="figure">
+                 <img src="{{ product.image|media_path }}" class="img-fluid" alt="{{ product.image }} 300x200" width="300" height="200">
+            </figure>
             <div class="col-md-8">
-                <h2>{{ products.name }}</h2>
-                <p>Описание: {{ products.description }}</p>
-                <p>Цена: {{ products.purchase_price }} руб.</p>
-                <button class="btn btn-primary">Заказать</button>
+                <h2>{{ object.name }}</h2>
+                <p>Описание: {{ object.description }}</p>
+                <p>Цена: {{ object.purchase_price }} руб.</p>
             </div>
 
 
         </div>
     </div>
+<div class="col-12 mb-5">
+    <a class="btn btn-outline-primary" href="{% url 'catalog:update_product' object.pk %}">Изменить</a>
+</div>
+
 {% endblock %}
