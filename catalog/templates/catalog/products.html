@@ -12,11 +12,14 @@
                 <h2>{{ object.name }}</h2>
                 <p>Описание: {{ object.description }}</p>
                 <p>Цена: {{ object.purchase_price }} руб.</p>
+                <p>Автор: {{ object.owner}}</p>
+
             </div>
 
 
         </div>
     </div>
+
 <div class="col-12 mb-5">
     <a class="btn btn-outline-primary" href="{% url 'catalog:update_product' object.pk %}">Изменить</a>
 </div>

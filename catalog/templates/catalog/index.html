@@ -15,9 +15,6 @@
                     <div class="card-body">
                         <h3 class="card-title">{{ object.name }}</h3>
                         <h4 class="card-title pricing-card-title">{{ object.purchase_price }} руб.</h4>
-                        <p class="card-text">
-                            {{ object.description }}
-                        </p>
                         <a href="{% url 'catalog:products' object.id %}" class="btn btn-primary">Просмотр товара</a>
                     </div>
                 </div>
@@ -25,9 +22,15 @@
         </div>
     {% endfor %}
     </div>>
+{% if user.is_authenticated %}
  <div class="col-3">
     <a class="btn btn-outline-primary" href="{% url 'catalog:create' %}">Добавить продукт</a>
 </div>
+{% else %}
+<div class="col-3">
+    <a class="btn btn-outline-primary" href="{% url 'users:login' %}">Войдите, чтобы добавить продукт</a>
+</div>
+        {% endif %}
 {% endblock %}
 
 

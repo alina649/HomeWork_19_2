@@ -1,4 +1,8 @@
+from django.conf import settings
 from django.db import models
+
+from blog.models import NULLABLE
+from users.models import User
 
 
 class Product(models.Model):
@@ -10,6 +14,8 @@ class Product(models.Model):
     last_modified_date = models.TimeField(verbose_name='дата последнего изменения', auto_now=True)
 
     category_product = models.ForeignKey('Category', on_delete=models.CASCADE, default=1, verbose_name='категория')
+
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, verbose_name='владелец', **NULLABLE)
 
     def __str__(self):
         return f'{self.name}, {self.purchase_price} rub, {self.description}'

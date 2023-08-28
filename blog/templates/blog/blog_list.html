@@ -3,9 +3,16 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Блог</h1>
 </div>
+
+{% if user.is_authenticated %}
 <div class="col-12 mb-5">
     <a class="btn btn-outline-primary" href="{% url 'blog:create' %}">Добавить статью</a>
 </div>
+{% else %}
+<div class="col-3">
+    <a class="btn btn-outline-primary" href="{% url 'users:login' %}">Войдите, чтобы добавить статью</a>
+</div>
+        {% endif %}
     {% for object in object_list %}
     <div class="col-md-4">
         <div class="card mb-4 box-shadow">
