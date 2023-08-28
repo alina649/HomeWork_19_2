@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'catalog',
     'blog',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'HomeWork19', # Название БД
+        'NAME': 'online_store', # Название БД
         'USER': 'postgres', # Пользователь для подключения
         'PASSWORD': '123406@aLINA', # Пароль для этого пользователя
         'PORT': 5432,
@@ -133,3 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTH_USER_MODEL = 'users.User'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
