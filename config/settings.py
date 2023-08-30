@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,12 +40,7 @@ INSTALLED_APPS = [
 
     'catalog',
     'blog',
-    'users',
-
 ]
-
-SITE_ID = 1
-SITE_NAME = "127.0.0.1:8000"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,14 +78,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'online_store',
-        'USER': 'postgres',
-        'PASSWORD': '123406@aLINA',
-
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'HomeWork19', # Название БД
+        'USER': 'postgres', # Пользователь для подключения
+        'PASSWORD': '123406@aLINA', # Пароль для этого пользователя
+        'PORT': 5432,
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -139,19 +133,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-AUTH_USER_MODEL = "users.User"
-LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = '/'
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_SSL = True
-EMAIL_HOST = "smtp.yandex.ru"
-EMAIL_HOST_USER = 'yukiniora@yandex.ru'
-EMAIL_PORT = 465
-
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-SERVER_EMAIL = EMAIL_HOST_USER
-EMAIL_ADMIN = EMAIL_HOST_USER
-
-EMAIL_HOST_PASSWORD = 'vvtzumslzqlsyrks'
