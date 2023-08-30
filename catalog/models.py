@@ -2,7 +2,6 @@ from django.conf import settings
 from django.db import models
 
 from blog.models import NULLABLE
-from users.models import User
 
 
 class Product(models.Model):
